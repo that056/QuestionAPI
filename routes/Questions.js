@@ -1,7 +1,9 @@
 const express = require('express')
 const route = express.Router()
 const data = require('../info/data_Questions')
-let personal_Q =[]
+
+route.get('/',(req,res)=>{
+    let personal_Q =[]
 let skill_Q =[]
 let hobbie_q =[]
 let future_q =[]
@@ -34,10 +36,6 @@ for(let i=0;i<2;i++){
     const r = Math.round(Math.random() * personal_Q.length)
     user_questions.push(personal_Q[r])
 }
-
-
-
-route.get('/',(req,res)=>{
     res.json(user_questions)
 })
 
