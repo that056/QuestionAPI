@@ -36,7 +36,7 @@ for(let i=0;i<2;i++){
     const r = Math.round(Math.random() * personal_Q.length)
     user_questions.push(personal_Q[r])
 }
-    res.json(JSON.stringify(user_questions))
+    res.json(user_questions)
 })
 
 module.exports =route
