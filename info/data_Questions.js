@@ -226,7 +226,7 @@ const data =[
     ),
     
     // Future Goals Questions
-    new Question(1, 'Future Goals', 'Where do you see yourself in five years?', 
+    new Question(1, 'Future_Goals', 'Where do you see yourself in five years?', 
         [
             "Leading a team or project",
             "Continuously learning and growing",
@@ -234,7 +234,7 @@ const data =[
             "Helping people or making a difference"
         ]
     ),
-    new Question(2, 'Future Goals', 'What type of career would make you feel the most fulfilled?', 
+    new Question(2, 'Future_Goals', 'What type of career would make you feel the most fulfilled?', 
         [
             "A career that challenges me intellectually",
             "A career where I can help others",
@@ -242,7 +242,7 @@ const data =[
             "A stable and secure career"
         ]
     ),
-    new Question(3, 'Future Goals', 'What kind of legacy do you want to leave behind?', 
+    new Question(3, 'Future_Goals', 'What kind of legacy do you want to leave behind?', 
         [
             "Innovative ideas or creations",
             "Positive impact on others",
@@ -250,7 +250,7 @@ const data =[
             "Meaningful contributions to society"
         ]
     ),
-    new Question(4, 'Future Goals', 'What motivates you to work hard toward your goals?', 
+    new Question(4, 'Future_Goals', 'What motivates you to work hard toward your goals?', 
         [
             "Desire for success and achievement",
             "Making a difference in the world",
@@ -258,7 +258,7 @@ const data =[
             "Achieving financial security"
         ]
     ),
-    new Question(5, 'Future Goals', 'What kind of work-life balance do you envision for yourself?', 
+    new Question(5, 'Future_Goals', 'What kind of work-life balance do you envision for yourself?', 
         [
             "Working hard for financial success",
             "Balanced schedule with time for hobbies",
@@ -267,4 +267,5 @@ const data =[
         ]
     )
 ]
+
 module.exports =data
