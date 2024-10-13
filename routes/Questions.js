@@ -11,7 +11,7 @@ route.get('/', (req, res) => {
     let user_questions = [];
 
     for (let i = 0; i < data.length; i++) {
-        if (data[i].category == 'Future Goals') {
+        if (data[i].category == 'Future_Goals') {
             future_q.push(data[i]);
         } else if (data[i].category == 'Skills') {
             skill_Q.push(data[i]);
