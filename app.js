@@ -1,10 +1,11 @@
-const { urlencoded } = require('body-parser')
+const { json, urlencoded } = require('body-parser');
 const express = require('express')
 const app = express()
-const cors = require('cors');
-app.use(express.urlencoded({extended:true}))
+app.use(express.json());
+const cors = require('cors')
+app.use(urlencoded({extended:true}))
 
-app.use(cors());
+app.use(cors())
 app.use('/getquestions',require('./routes/Questions'))
 app.use('/submit',require('./routes/CareerRec'))
 
