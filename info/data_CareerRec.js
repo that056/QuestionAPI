@@ -1,85 +1,113 @@
-const data = [
-    // Personal Questions
-    {
-        questionType: 'Personal',
-        options: {
-            "Creative pursuits (art, music, writing)": ["Graphic Designer", "Writer", "Musician", "Filmmaker", "Art Director"],
-            "Helping others (social work, healthcare)": ["Social Worker", "Counselor", "Nurse", "Doctor", "Community Organizer"],
-            "Problem-solving (engineering, technology)": ["Software Engineer", "Data Scientist", "Mechanical Engineer", "Systems Analyst"],
-            "Outdoor activities (environment, conservation)": ["Environmental Scientist", "Wildlife Conservationist", "Park Ranger", "Landscape Architect"],
-            "Complex problems": ["Engineer", "Data Analyst", "Mathematician", "Research Scientist"],
-            "Creative challenges": ["Artist", "Creative Director", "Animator", "Photographer"],
-            "Helping others": ["Teacher", "Social Worker", "Therapist", "Healthcare Worker"],
-            "Learning new things": ["Researcher", "Educator", "Analyst", "Innovation Consultant"],
-            "Help people and improve lives": ["Doctor", "Social Worker", "Public Health Official", "Non-Profit Leader"],
-            "Solve problems and innovate": ["Engineer", "Entrepreneur", "Consultant", "Technologist"],
-            "Protect the environment": ["Environmental Lawyer", "Sustainability Manager", "Ecologist"],
-            "Advance social justice": ["Human Rights Lawyer", "Policy Analyst", "Activist", "NGO Worker"],
-            "High-paying job with long hours": ["Investment Banker", "Corporate Lawyer", "Surgeon"],
-            "Flexible schedule with work-life balance": ["Freelancer", "Consultant", "Remote Worker"],
-            "Travel-oriented career": ["Travel Writer", "International Consultant", "Airline Pilot", "Travel Photographer"],
-            "Stable and secure job": ["Accountant", "Civil Servant", "Teacher", "Engineer"]
-        }
+const careerMapping = {
+    'Personal': {
+        "Creative pursuits (art, music, writing)": ["Artist", "Musician", "Graphic Designer", "Writer", "Content Creator"],
+        "Helping others (social work, healthcare)": ["Social Worker", "Nurse", "Counselor", "Healthcare Administrator", "Mental Health Therapist"],
+        "Problem-solving (engineering, technology)": ["Software Engineer", "Data Scientist", "Mechanical Engineer", "Systems Analyst", "Architect"],
+        "Outdoor activities (environment, conservation)": ["Environmental Scientist", "Park Ranger", "Wildlife Conservationist", "Forestry Manager", "Ecologist"],
+        "Complex problems": ["Data Scientist", "Engineer", "Mathematician", "Systems Analyst", "Economist"],
+        "Creative challenges": ["Artist", "Game Designer", "Marketing Specialist", "Copywriter", "Animator"],
+        "Helping others": ["Teacher", "Social Worker", "Non-Profit Manager", "Healthcare Professional", "Counselor"],
+        "Learning new things": ["Research Scientist", "Educator", "Entrepreneur", "Professional Trainer", "Lifelong Learner"],
+        "Helping others": ["Charity Worker", "Doctor", "Teacher", "Social Worker", "Life Coach"],
+        "Achieving goals": ["Project Manager", "Entrepreneur", "Athlete", "Executive", "Sales Manager"],
+        "Learning new things": ["Academic Researcher", "Librarian", "Data Scientist", "Teacher", "Scientist"],
+        "Creating something new": ["Product Designer", "Inventor", "Entrepreneur", "Software Developer", "Artist"],
+        "Help people and improve lives": ["Doctor", "Non-Profit Manager", "Social Worker", "Teacher", "Public Health Professional"],
+        "Solve problems and innovate": ["Engineer", "Scientist", "Software Developer", "Product Manager", "Consultant"],
+        "Protect the environment": ["Environmental Scientist", "Conservationist", "Wildlife Biologist", "Forester", "Ecologist"],
+        "Advance social justice": ["Lawyer", "Human Rights Advocate", "Public Policy Analyst", "Community Organizer", "Social Worker"],
+        "Analytical thinking": ["Data Analyst", "Economist", "Software Developer", "Engineer", "Scientist"],
+        "Creativity": ["Artist", "Designer", "Writer", "Marketing Specialist", "Photographer"],
+        "Communication skills": ["Public Relations Specialist", "Journalist", "Teacher", "Sales Executive", "Counselor"],
+        "Leadership": ["CEO", "Project Manager", "Team Leader", "Business Executive", "Entrepreneur"],
+        "High-paying job with long hours": ["Corporate Lawyer", "Investment Banker", "Surgeon", "Executive", "Consultant"],
+        "Flexible schedule with work-life balance": ["Freelancer", "Consultant", "Digital Nomad", "Graphic Designer", "Teacher"],
+        "Travel-oriented career": ["Travel Blogger", "Tour Guide", "Photographer", "Flight Attendant", "Consultant"],
+        "Stable and secure job": ["Government Employee", "Accountant", "Teacher", "Nurse", "Engineer"],
+        "Making a positive impact on the world": ["Social Worker", "Non-Profit Manager", "Public Policy Advocate", "Teacher", "Healthcare Professional"],
+        "Financial stability": ["Accountant", "Financial Analyst", "Banker", "Entrepreneur", "Business Executive"],
+        "Work-life balance": ["Consultant", "Freelancer", "Graphic Designer", "Teacher", "Remote Worker"],
+        "Continuous learning and growth": ["Research Scientist", "Academic", "Teacher", "Software Developer", "Entrepreneur"],
+        "Personal growth": ["Life Coach", "Personal Development Trainer", "Psychologist", "Entrepreneur", "Writer"],
+        "Helping others": ["Nurse", "Teacher", "Therapist", "Social Worker", "Non-Profit Worker"],
+        "Financial success": ["Entrepreneur", "Investor", "Corporate Lawyer", "Executive", "Business Owner"],
+        "Achieving balance": ["Consultant", "Freelancer", "Digital Nomad", "Teacher", "Remote Worker"],
+        "Problem-solving and staying calm": ["Engineer", "Crisis Manager", "Project Manager", "Police Officer", "Paramedic"],
+        "Seeking creative outlets": ["Artist", "Writer", "Musician", "Graphic Designer", "Photographer"],
+        "Talking with others for support": ["Counselor", "Therapist", "Social Worker", "Human Resources Specialist", "Mediator"],
+        "Taking time for self-care": ["Life Coach", "Psychologist", "Wellness Consultant", "Yoga Instructor", "Counselor"],
+        "Collaborative teams": ["Team Leader", "Project Manager", "Software Developer", "Marketing Specialist", "Event Planner"],
+        "Autonomous and independent work": ["Freelancer", "Consultant", "Researcher", "Writer", "Artist"],
+        "Dynamic and fast-paced settings": ["Event Manager", "Entrepreneur", "Marketing Manager", "Journalist", "Sales Executive"],
+        "Structured and organized environments": ["Accountant", "Engineer", "Project Manager", "Administrator", "Banker"],
+        "Leader": ["CEO", "Manager", "Team Leader", "Politician", "Business Executive"],
+        "Supporter": ["Administrative Assistant", "Human Resources Specialist", "Customer Service Representative", "Teacher", "Social Worker"],
+        "Innovator": ["Entrepreneur", "Product Designer", "Inventor", "Software Developer", "Architect"],
+        "Mediator": ["Counselor", "Lawyer", "Human Resources Specialist", "Social Worker", "Conflict Resolution Specialist"],
+        "Achieving career goals": ["CEO", "Executive", "Entrepreneur", "Sales Manager", "Consultant"],
+        "Making a positive impact": ["Social Worker", "Non-Profit Manager", "Teacher", "Public Health Worker", "Counselor"],
+        "Having a work-life balance": ["Freelancer", "Consultant", "Remote Worker", "Digital Nomad", "Teacher"],
+        "Gaining financial independence": ["Entrepreneur", "Investor", "Business Owner", "Financial Planner", "Real Estate Agent"]
     },
-    
-    // Hobbies Questions
-    {
-        questionType: 'Hobbies',
-        options: {
-            "People and society": ["Sociologist", "Anthropologist", "Human Resources Manager"],
-            "The natural world": ["Biologist", "Geologist", "Environmental Scientist"],
-            "Technology and innovation": ["Software Developer", "Inventor", "Robotics Engineer"],
-            "Creative expression": ["Writer", "Painter", "Designer", "Animator"],
-            "Social justice and equality": ["Public Policy Advisor", "Activist", "Social Justice Lawyer"],
-            "Environmental protection": ["Environmental Engineer", "Conservationist", "Marine Biologist"],
-            "Healthcare and public health": ["Epidemiologist", "Public Health Worker", "Doctor"],
-            "Education and learning": ["Teacher", "Curriculum Developer", "Educational Technologist"],
-            "Economic development": ["Economist", "Urban Planner", "International Development Expert"],
-            "Artistic or creative work": ["Fine Artist", "Illustrator", "Graphic Designer"],
-            "Outdoor adventures": ["Wildlife Photographer", "Adventure Guide", "Ecotourism Expert"],
-            "Building or creating things": ["Architect", "Engineer", "Carpenter"],
-            "Studying human behavior": ["Psychologist", "Sociologist", "Behavioral Scientist"]
-        }
+    'Hobbies': {
+        "People and society": ["Sociologist", "Psychologist", "Journalist", "Public Relations Specialist", "Community Organizer"],
+        "The natural world": ["Biologist", "Environmental Scientist", "Geologist", "Conservationist", "Marine Biologist"],
+        "Technology and innovation": ["Software Developer", "Engineer", "Product Manager", "Tech Entrepreneur", "AI Researcher"],
+        "Creative expression": ["Photographer", "Artist", "Writer", "Graphic Designer", "Filmmaker"],
+        "Helping others": ["Social Worker", "Teacher", "Healthcare Worker", "Non-Profit Volunteer", "Life Coach"],
+        "Achieving goals": ["Entrepreneur", "Athlete", "Sales Executive", "Executive", "Consultant"],
+        "Learning new things": ["Researcher", "Librarian", "Scientist", "Educator", "Engineer"],
+        "Creating something new": ["Artist", "Inventor", "Software Developer", "Game Designer", "Entrepreneur"],
+        "Social justice and equality": ["Lawyer", "Community Organizer", "Public Policy Advocate", "Human Rights Advocate", "Social Worker"],
+        "Environmental protection": ["Environmental Scientist", "Conservationist", "Wildlife Biologist", "Ecologist", "Park Ranger"],
+        "Healthcare and public health": ["Public Health Specialist", "Doctor", "Nurse", "Healthcare Administrator", "Epidemiologist"],
+        "Education and learning": ["Teacher", "Curriculum Developer", "Educational Consultant", "Researcher", "Librarian"],
+        "Economic development": ["Economist", "Financial Analyst", "Consultant", "Business Developer", "Urban Planner"],
+        "Analytical thinking": ["Data Analyst", "Engineer", "Economist", "Researcher", "Scientist"],
+        "Creativity": ["Artist", "Graphic Designer", "Writer", "Musician", "Game Designer"],
+        "Communication skills": ["Journalist", "Teacher", "Public Relations Specialist", "Sales Executive", "Counselor"],
+        "Leadership": ["CEO", "Project Manager", "Team Leader", "Business Executive", "Entrepreneur"],
+        "Technical skills": ["Software Developer", "Engineer", "Data Scientist", "IT Specialist", "Product Developer"],
+        "Engaging in creative activities": ["Artist", "Writer", "Graphic Designer", "Musician", "Photographer"],
+        "Volunteering or helping others": ["Social Worker", "Teacher", "Healthcare Worker", "Non-Profit Manager", "Life Coach"],
+        "Exploring nature or outdoor activities": ["Conservationist", "Park Ranger", "Wildlife Biologist", "Geologist", "Ecologist"],
+        "Learning new skills": ["Researcher", "Engineer", "Scientist", "Lifelong Learner", "Educator"],
+        "Creative projects": ["Artist", "Game Designer", "Animator", "Photographer", "Musician"],
+        "Researching new topics": ["Scientist", "Researcher", "Journalist", "Academic", "Data Analyst"],
+        "Collaborating with others": ["Marketing Specialist", "Event Planner", "Project Manager", "Sales Executive", "Consultant"],
+        "Solving challenging problems": ["Engineer", "Software Developer", "Data Scientist", "Consultant", "Researcher"],
+        "Artistic or creative work": ["Artist", "Writer", "Graphic Designer", "Musician", "Filmmaker"],
+        "Outdoor or nature-based work": ["Environmental Scientist", "Park Ranger", "Geologist", "Wildlife Biologist", "Forester"],
+        "Structured and organized work": ["Project Manager", "Accountant", "Engineer", "Administrator", "Financial Analyst"],
+        "Leading teams or initiatives": ["CEO", "Manager", "Team Leader", "Business Executive", "Project Manager"]
     },
-    
-    // Skills Questions
-    {
-        questionType: 'Skills',
-        options: {
-            "Analyzing data or solving complex problems": ["Data Scientist", "Statistician", "Operations Research Analyst"],
-            "Communicating with others effectively": ["Public Relations Specialist", "Journalist", "Sales Manager"],
-            "Creating or designing new ideas": ["Product Designer", "UX/UI Designer", "Innovator"],
-            "Leading and managing teams": ["Project Manager", "CEO", "Business Consultant"],
-            "Through hands-on experience": ["Mechanic", "Laboratory Technician", "Plumber"],
-            "By reading and studying": ["Academic Researcher", "Historian", "Theoretical Physicist"],
-            "Working with mentors or experts": ["Apprentice", "Junior Consultant", "Trainee in a Specialized Field"],
-            "Experimenting and trying new things": ["Innovator", "Entrepreneur", "Research Scientist"],
-            "Completing a challenging project": ["Project Manager", "Engineer", "Architect"],
-            "Helping others in a meaningful way": ["Teacher", "Social Worker", "Nurse"],
-            "Learning something new and complex": ["Researcher", "PhD Student", "Data Analyst"],
-            "Overcoming a personal challenge": ["Life Coach", "Motivational Speaker", "Author"]
-        }
+    'Skills': {
+        "Analyzing data or solving complex problems": ["Data Analyst", "Engineer", "Statistician", "Operations Research Analyst", "Financial Analyst"],
+        "Communicating with others effectively": ["Teacher", "Sales Manager", "Public Relations Specialist", "Journalist", "Counselor"],
+        "Creating or designing new ideas": ["Product Designer", "Graphic Designer", "UX/UI Designer", "Game Developer", "Fashion Designer"],
+        "Leading and managing teams": ["Project Manager", "Operations Manager", "Business Executive", "Team Leader", "HR Manager"],
+        "Working with your hands": ["Carpenter", "Mechanic", "Craftsperson", "Electrician", "Plumber"],
+        "Learning and absorbing new knowledge": ["Academic Researcher", "Scientist", "Educator", "Librarian", "Data Scientist"],
+        "Solving technical or mechanical issues": ["Engineer", "Mechanic", "Technician", "IT Specialist", "Product Developer"],
+        "Bringing people together to solve problems": ["Mediator", "Human Resources Specialist", "Team Leader", "Community Organizer", "Event Manager"],
+        "Analyzing and making sense of data": ["Data Analyst", "Statistician", "Research Scientist", "Financial Analyst", "Operations Research Analyst"],
+        "Communicating complex ideas clearly": ["Public Relations Specialist", "Journalist", "Teacher", "Counselor", "Sales Executive"],
+        "Leading and managing projects or teams": ["CEO", "Project Manager", "Team Leader", "Operations Manager", "HR Manager"],
+        "Creating new things or ideas": ["Artist", "Product Designer", "Software Developer", "Inventor", "Writer"],
+        "Helping others through direct service": ["Social Worker", "Nurse", "Teacher", "Therapist", "Non-Profit Worker"],
+        "Thinking analytically": ["Data Scientist", "Engineer", "Economist", "Researcher", "Statistician"],
+        "Thinking creatively": ["Artist", "Graphic Designer", "Writer", "Marketing Specialist", "Musician"]
     },
-    
-    // Future Goals Questions
-    {
-        questionType: 'Future_Goals',
-        options: {
-            "Leading a team or project": ["Project Manager", "CEO", "Team Lead", "Business Owner"],
-            "Continuously learning and growing": ["Academic", "Lifelong Learner", "Researcher"],
-            "Running my own business": ["Entrepreneur", "Small Business Owner", "Freelancer"],
-            "Helping people or making a difference": ["Humanitarian Worker", "Doctor", "Counselor", "NGO Manager"],
-            "A career that challenges me intellectually": ["Scientist", "Mathematician", "Analyst"],
-            "A career where I can help others": ["Teacher", "Social Worker", "Healthcare Professional"],
-            "A creative and dynamic career": ["Filmmaker", "Art Director", "Advertising Executive"],
-            "A stable and secure career": ["Accountant", "Civil Engineer", "Lawyer"],
-            "Working hard for financial success": ["Investment Banker", "Corporate Executive", "Attorney"],
-            "Balanced schedule with time for hobbies": ["Freelance Writer", "Consultant", "Remote Worker"],
-            "Flexible career that allows travel": ["Digital Nomad", "Travel Consultant", "Photographer"],
-            "Stable routine with security and structure": ["Government Employee", "Educator", "Healthcare Worker"]
-        }
+    'Future_Goals': {
+        "Leading a team or project": ["Team Lead", "Project Manager", "Operations Manager", "Business Leader", "Consultant"],
+        "Continuously learning and growing": ["Research Scientist", "Academic", "Entrepreneur", "Educator", "Professional Trainer"],
+        "Running my own business": ["Entrepreneur", "Small Business Owner", "Consultant", "Startup Founder", "Franchise Owner"],
+        "Helping people or making a difference": ["Non-Profit Manager", "Social Worker", "Healthcare Professional", "Public Policy Advocate", "Humanitarian Worker"],
+        "Achieving financial independence": ["Investor", "Entrepreneur", "Business Executive", "Corporate Lawyer", "Real Estate Agent"],
+        "Building a successful career": ["Executive", "Sales Manager", "Consultant", "Lawyer", "Financial Planner"],
+        "Making a positive impact on the world": ["Teacher", "Social Worker", "Non-Profit Manager", "Public Health Professional", "Environmental Activist"],
+        "Maintaining a balanced work-life": ["Freelancer", "Consultant", "Digital Nomad", "Remote Worker", "Teacher"]
     }
-];
+};
 
-
-module.exports = data
+module.exports = careerMapping;
