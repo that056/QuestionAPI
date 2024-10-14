@@ -1,33 +1,53 @@
-const express = require('express')
+const express = require('express');
+const route = express.Router();
+const careerRecommendations = require('../info/data_CareerRec'); 
+let userSelections = {}; 
 
-const route = express.Router()
-const careerRecommendations = require('../info/data_CareerRec')
-let userSelections={}
+function RecommendCareer(userSelections) {
+    let recommendedCareers = new Set(); 
 
-function RecommendCareer(userselection){
-    let recommendCareers= new Set()
-    for(const category in userSelections){
-       const selectedOption =  userSelections[category]
-       if(careerRecommendations[category][selectedOption]){
-        careerRecommendations[category][selectedOption].forEach(career =>{
-            recommendCareers.add(career)
-        })
-       }
+   
+    for (const category in userSelections) {
+        const selectedOption = userSelections[category];
 
+       
+        for (const questionType in careerRecommendations) {
+            
+            if (questionType === category) {
+                const options = careerRecommendations[questionType]; 
+
+                
+                if (options[selectedOption]) {
+                    
+                    
+                   
+                    options[selectedOption].forEach(career => {
+                        recommendedCareers.add(career); 
+                    });
+                }
+            }
+        }
     }
-    return Array.from(recommendCareers)
+
+    return Array.from(recommendedCareers); 
 }
 
-route.post('/',(req,res)=>{
-    const ar = req.body.response
-    for(const r in ar){
-       userSelections[ar[r].category] = ar[r].option
+
+route.post('/', (req, res) => {
+    const userResponses = req.body.response;
+
+    
+    userSelections = {};
+    for (const response of userResponses) {
+        userSelections[response.category] = response.option;
     }
-    const rec_career = RecommendCareer(userSelections)
-    console.log(rec_career)
 
-    res.send('Got it')
-   
-})
+    console.log(userSelections);
 
-module.exports =route
+    const recommendedCareers = RecommendCareer(userSelections);
+    console.log(recommendedCareers);
+
+    res.json({ recommendedCareers });
+});
+
+module.exports = route;
