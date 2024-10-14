@@ -23,25 +23,21 @@ route.get('/', (req, res) => {
     }
 
     for (let i = 0; i < 2; i++) {
-        const r = Math.round(Math.random() * hobbie_q.length);
+        const r = Math.round(Math.random() *4);
         user_questions.push(hobbie_q[r]);
-        const idx = hobbie_q.indexOf(hobbie_q[r])
-        hobbie_q.splice(idx,1)
-        const v = Math.round(Math.random() * skill_Q.length);
+        
+        const v = Math.round(Math.random() *4);
         user_questions.push(skill_Q[v]);
-        const idv = skill_Q.indexOf(skill_Q[v])
-        skill_Q.splice(idv,1)
-        const x = Math.round(Math.random() * future_q.length);
+        
+        const x = Math.round(Math.random() *4);
         user_questions.push(future_q[x]);
-        const ida = future_q.indexOf(future_q[x])
-        future_q.splice(ida,1)
+       
     }
 
     for (let i = 0; i < 2; i++) {
         const r = Math.round(Math.random() * personal_Q.length);
         user_questions.push(personal_Q[r]);
-        const idx = personal_Q.indexOf(personal_Q[r])
-        personal_Q.splice(idx,1)
+        
     }
 
     res.json({ questions: user_questions });
