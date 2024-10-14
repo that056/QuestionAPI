@@ -35,16 +35,16 @@ function RecommendCareer(userSelections) {
 
 route.post('/', (req, res) => {
     const userResponses = req.body.response;
+    console.log(userSelections);
+    
+    // userSelections = {};
+    // for (const response of userResponses) {
+    //     userSelections[response.category] = response.option;
+    // }
 
     
-    userSelections = {};
-    for (const response of userResponses) {
-        userSelections[response.category] = response.option;
-    }
 
-    console.log(userSelections);
-
-    const recommendedCareers = RecommendCareer(userSelections);
+    const recommendedCareers = RecommendCareer(userResponses);
     console.log(recommendedCareers);
 
     res.json({ recommendedCareers });
